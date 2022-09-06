@@ -1,0 +1,116 @@
+<definitions name="MyService"
+             targetNamespace="http://www.examples.com/wsdl/MyService.wsdl"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns="http://www.examples.com/wsdl/MyService.wsdl"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <message name="MySumFunctionRequest">
+        <part name="testParam" type="xsd:string"/>
+    </message>
+
+    <message name="MySumFunctionResponse">
+        <part name="status" type="xsd:string"/>
+    </message>
+
+    <message name="MySubtractFunctionRequest">
+        <part name="testParam" type="xsd:string"/>
+    </message>
+
+    <message name="MySubtractFunctionResponse">
+        <part name="status" type="xsd:string"/>
+    </message>
+
+    <message name="MyMultiplyFunctionRequest">
+        <part name="testParam" type="xsd:string"/>
+    </message>
+
+    <message name="MyMultiplyFunctionResponse">
+        <part name="status" type="xsd:string"/>
+    </message>
+
+    <message name="MyDivideFunctionRequest">
+        <part name="testParam" type="xsd:string"/>
+    </message>
+
+    <message name="MyDivideFunctionResponse">
+        <part name="status" type="xsd:string"/>
+    </message>
+
+    <portType name="MyPort">
+        <operation name="MySumFunction">
+            <input message="tns:MySumFunctionRequest"/>
+            <output message="tns:MySumFunctionResponse"/>
+        </operation>
+        <operation name="MySubtractFunction">
+            <input message="tns:MySubtractFunctionRequest"/>
+            <output message="tns:MySubtractFunctionResponse"/>
+        </operation>
+        <operation name="MyMultiplyFunction">
+            <input message="tns:MyMultiplyFunctionRequest"/>
+            <output message="tns:MyMultiplyFunctionResponse"/>
+        </operation>
+        <operation name="MyDivideFunction">
+            <input message="tns:MyDivideFunctionRequest"/>
+            <output message="tns:MyDivideFunctionResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="MyFunction_Binding" type="tns:MyPort">
+        <soap:binding style="rpc"
+                      transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="MySumFunction">
+            <soap:operation soapAction="MySumFunction"/>
+            <input>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:MyService"
+                           use="encoded"/>
+            </input>
+            <output>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:MyService"
+                           use="encoded"/>
+            </output>
+        </operation>
+        <operation name="MySubtractFunction">
+            <soap:operation soapAction="MySubtractFunction"/>
+            <input>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:MyService"
+                           use="encoded"/>
+            </input>
+            <output>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:MyService"
+                           use="encoded"/>
+            </output>
+        </operation>
+        <operation name="MyMultiplyFunction">
+            <soap:operation soapAction="MyMultiplyFunction"/>
+            <input>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:MyService"
+                           use="encoded"/>
+            </input>
+            <output>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:MyService"
+                           use="encoded"/>
+            </output>
+        </operation>
+        <operation name="MyDivideFunction">
+            <soap:operation soapAction="MyDivideFunction"/>
+            <input>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:MyService"
+                           use="encoded"/>
+            </input>
+            <output>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:examples:MyService"
+                           use="encoded"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="MyService">
+        <documentation>WSDL File for MyService</documentation>
+        <port binding="tns:MyFunction_Binding" name="MyPort">
+            <soap:address
+                    location="http://localhost:8000/wsdl"/>
+        </port>
+    </service>
+
+</definitions>
